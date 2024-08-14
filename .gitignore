@@ -1,0 +1,18 @@
+# Diretórios
+venv/
+__pycache__/
+staticfiles/
+media/
+logs/
+
+# Arquivos
+*.pyc
+*.log
+*.sqlite3
+*.db
+*.DS_Store
+
+# Outros
+pip-debug.log
+pip.log
+requirements.txt~
