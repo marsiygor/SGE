@@ -1,12 +1,6 @@
 # Sistema de Gestão de Estoque (SGE) com Inteligência Artificial Integrada
 
-![Status](https://img.shields.io/badge/Status-Prototyping_&_Beta-blue)
-![Backend](https://img.shields.io/badge/Stack-Django_5.0-092E20?style=flat&logo=django)
-![AI](https://img.shields.io/badge/AI_Engine-LangGraph_|_OpenAI-412991)
-
 Este repositório contém o código-fonte do protótipo avançado de um Sistema de Gestão de Estoque (SGE). O projeto propõe um núcleo de arquitetura monolítica focado em robustez e acurácia de transações, complementado de forma inovadora com agentes de Inteligência Artificial usando a stack do LangChain/LangGraph.
-
-> **Objetivo de Avaliação**: Este documento funciona como guia arquitetural para validadores técnicos, garantindo que as implementações do motor de IA, do modelo cognitivo e a estrutura relacional de dados fiquem cristalinas.
 
 ---
 
