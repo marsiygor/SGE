@@ -14,7 +14,7 @@ class AgentState(TypedDict):
 llm = ChatOpenAI(
     model="gpt-4o-mini",
     temperature=0.3,
-    api_key=os.getenv("OPENAI_API_KEY", "sua-chave-aqui")
+    api_key=os.getenv("OPENAI_API_KEY")
 )
 
 tools = [check_product_stock, list_low_stock_products, get_total_inventory_value]
