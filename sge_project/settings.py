@@ -25,10 +25,10 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_03=yf*sv9g@ho3%jm*weh8v$xp-1%rb%jmqj4#3kgz6_1c7u('
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-_03=yf*sv9g@ho3%jm*weh8v$xp-1%rb%jmqj4#3kgz6_1c7u(')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = []
 
@@ -56,7 +56,7 @@ OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.AllowAny' if DEBUG else 'rest_framework.permissions.IsAuthenticated',
     ]
 }
 

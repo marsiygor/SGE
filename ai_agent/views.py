@@ -16,6 +16,13 @@ class CopilotChatAPIView(APIView):
         if not user_message:
             return Response({"error": "A mensagem é obrigatória."}, status=status.HTTP_400_BAD_REQUEST)
 
+        if not isinstance(history_input, list):
+            return Response({"error": "O campo 'history' deve ser uma lista."}, status=status.HTTP_400_BAD_REQUEST)
+
+        for msg in history_input:
+            if not isinstance(msg, dict) or 'role' not in msg or 'content' not in msg:
+                return Response({"error": "O campo 'history' deve conter objetos com 'role' e 'content'."}, status=status.HTTP_400_BAD_REQUEST)
+
         try:
             messages = []
             for msg in history_input:
@@ -33,8 +40,8 @@ class CopilotChatAPIView(APIView):
             return Response({"response": final_response, "status": "success"})
 
         except Exception as e:
-            logger.error(f"Erro ao processar requisição do Copiloto: {str(e)}")
+            logger.error(f"Erro ao processar requisição do Copiloto: {str(e)}", exc_info=True)
             return Response(
-                {"error": "Falha interna ao processar sua solicitação.", "details": str(e)},
+                {"error": "Falha interna ao processar sua solicitação."},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
